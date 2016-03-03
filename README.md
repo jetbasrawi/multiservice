@@ -8,9 +8,9 @@ The cononical Docker Compose demo app which records the number of times a page h
 
 Clone the example into your GOPATH.
 
-The application uses Gulp to install and run the Go web application. You will need to install Gulp and a numeber of plugins in the application directory on you workstation.
+The application uses Gulp to install and run the Go web application. You will need to install Gulp and a numeber of plugins in the application directory on your workstation.
 
-Navigate to the application directory on your workstation and run the following commands.
+Navigate to the application directory on your workstation and run the following commands.::
 
 `$ npm install --save-dev gulp`
 
