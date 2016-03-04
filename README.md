@@ -1,6 +1,6 @@
 #multiservice
 
-An simple example of linking a Go application to a Redis database running on Docker and provisioned with Docker Compose. 
+An simple example of linking a Go application to a Redis database running on Docker and provisioned with Docker Compose. V2 improves on V1 by showing how it is possible to persist data independently of the database container lifecycle using named volumes.  
 
 The cononical Docker Compose demo app which records the number of times a page has been viewed in a Redis database. The web application from the cononical example is ported to Go.
 
@@ -14,7 +14,7 @@ The application uses the Redigo client for Redis. You will need to go get this d
 
 The application uses Gulp to install and run the Go web application. You will need to install Gulp and a numeber of plugins in the application directory on your workstation.
 
-Navigate to the application directory on your workstation and run the following commands.::
+Navigate to the application directory on your workstation and run the following commands.
 
 `$ npm install --save-dev gulp`
 
@@ -22,7 +22,17 @@ Navigate to the application directory on your workstation and run the following 
 
 `$ npm install --save node-notifier`
 
-Navigate to the application directory in the CLI of your docker enviroment. Run the docker-compose up command. A Redis server and an Alpine container hosting the web application will be started.
+
+Navigate to the application directory in the CLI of your docker enviroment. 
+Create a named volume 
+
+`$ docker volume create multiservice_redis_data`
+
+Run the docker-compose up command. 
+
+`$ docker-compose up`
+
+A Redis server and an Alpine container hosting the web application will be started.
 
 The Gulp task runner will install and run the webserver.
 
