@@ -11,4 +11,6 @@ VOLUME ["/go/src/github.com/jetbasrawi/app", "/go/pkg", "/go/bin"]
 
 WORKDIR /go/src/github.com/jetbasrawi/app
 
+RUN go get github.com/garyburd/redigo/redis
+
 CMD ["gulp"]

@@ -1,9 +1,10 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"net/http"
-	"html/template"
+
 	"github.com/garyburd/redigo/redis"
 )
 
@@ -11,13 +12,12 @@ type PageData struct {
 	NumViews string
 }
 
-
 func main() {
 
-	templates := template.Must(template.ParseFiles("templates/index.html"))	
+	templates := template.Must(template.ParseFiles("templates/index.html"))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		
+
 		//Set up connection to redis
 		conn, err := redis.Dial("tcp", "redis:6379")
 		if err != nil {
@@ -32,8 +32,7 @@ func main() {
 		//Get the current number of views
 		numviews, err := redis.String(conn.Do("GET", "numviews"))
 
-		pageData := PageData { NumViews: numviews }
-
+		pageData := PageData{NumViews: numviews}
 
 		if err := templates.ExecuteTemplate(w, "index.html", pageData); err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
