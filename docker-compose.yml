@@ -15,10 +15,8 @@ services:
     image: redis
     command: redis-server --appendonly yes
     volumes: 
-      - multiservice_redis_data:/data
+      - ./workstation_multiservice_redis_data:/data
 
-volumes:  
-  multiservice_redis_data:   
-    external: true
+
 
 
